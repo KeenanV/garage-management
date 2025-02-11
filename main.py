@@ -93,14 +93,14 @@ class Garage:
             while ii < len(self.__current_state):
                 match self.__current_state[ii]:
                     case 'c':
-                        summarized_state.append(f'car {ii}')
+                        summarized_state.append(f'car {ii + 1}')
                     case 'm':
-                        summarized_state.append(f'motorcycle {ii}')
+                        summarized_state.append(f'motorcycle {ii + 1}')
                     case 'v':
-                        summarized_state.append(f'van {ii}')
+                        summarized_state.append(f'van {ii + 1}')
                         ii += 2
                     case _:
-                        summarized_state.append(f'empty {ii}')
+                        summarized_state.append(f'empty {ii + 1}')
                 ii += 1
             return self.__cars, self.__motorcycles, self.__vans, summarized_state
 
@@ -147,17 +147,17 @@ if __name__ == '__main__':
                 case 'car':
                     # If the user has specified a car based on its spot number, remove it from there
                     if len(action) == 3:
-                        result = f"Successfully removed a car from spot {action[2]}!" if garage.remove_vehicle('c', int(action[2])) == 0 else "Couldn't find a car in that spot :("
+                        result = f"Successfully removed a car from spot {action[2]}!" if garage.remove_vehicle('c', int(action[2]) - 1) == 0 else "Couldn't find a car in that spot :("
                     else:
                         result = "Successfully removed a car!" if garage.remove_vehicle('c') == 0 else "Couldn't find any cars parked :("
                 case 'motorcycle':
                     if len(action) == 3:
-                        result = f"Successfully removed a motorcycle from spot {action[2]}!" if garage.remove_vehicle('m', int(action[2])) == 0 else "Couldn't find a motorcycle in that spot :("
+                        result = f"Successfully removed a motorcycle from spot {action[2]}!" if garage.remove_vehicle('m', int(action[2]) - 1) == 0 else "Couldn't find a motorcycle in that spot :("
                     else:
                         result = "Successfully removed a motorcycle!" if garage.remove_vehicle('m') == 0 else "Couldn't find any motorcycles parked :("
                 case 'van':
                     if len(action) == 3:
-                        result = f"Successfully removed a van from spot {action[2]}!" if garage.remove_vehicle('v', int(action[2])) == 0 else "Couldn't find a van in that spot :("
+                        result = f"Successfully removed a van from spot {action[2]}!" if garage.remove_vehicle('v', int(action[2]) - 1) == 0 else "Couldn't find a van in that spot :("
                     else:
                         result = "Successfully removed a van!" if garage.remove_vehicle('v') == 0 else "Couldn't find any vans parked :("
                 case _:
